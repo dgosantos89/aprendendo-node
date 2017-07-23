@@ -1,0 +1,21 @@
+/*
+*Cliente teste para simular requisicoes no formato json
+*/
+
+var http = require('http');
+
+var configuracoes = {
+	hotsname: 'localhost',
+	port: 3000,
+	path: '/produtos',
+	headers: {
+		'Accept': 'application/json'
+	}
+};
+
+http.get(configuracoes, function(res){
+	console.log(res.statusCode);
+	res.on('data', function(body) {
+		console.log('Corpo:'+body);
+	});
+});
